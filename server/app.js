@@ -44,7 +44,7 @@ app.post("/api/verification", async (req, res) => {
         res.status(201).json({ message: "Verification code sent successfully" });
     } catch (error) {
         console.error("Backend Error from verification API", error);
-        res.status(500).json({ error: "Internal server error" });
+        res.status(500).json({ error: "Internal server error", details: error });
     }
 });
 
@@ -91,7 +91,7 @@ app.post("/api/signup", async (req, res) => {
         }
     } catch (error) {
         console.error("Backend Error from signup API", error);
-        res.status(500).json({ error: "Internal server error" });
+        res.status(500).json({ error: "Internal server error", details: error });
     }
 });
 
