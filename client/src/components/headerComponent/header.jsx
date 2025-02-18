@@ -17,7 +17,7 @@ export default function Header() {
     }
 
     const logoutFunction = () => {
-        axios.post('http://localhost:8080/api/logout', {
+        axios.post('https://my-profile-server-one.vercel.app/api/logout', {
             
         }, {
             withCredentials: true, 
