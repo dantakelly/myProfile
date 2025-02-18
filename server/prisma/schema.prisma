@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_DIRECT")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile    Profile? 
+}
+
+model Profile { 
+  id                String     @id @default(cuid())
+  userId            String     @unique
+  user              User       @relation(fields: [userId], references: [id])
+  profileImage      String?
+  name              String
+  aboutMe           String 
+  instagramHandle   String? 
+  tiktokHandle      String? 
+}
+
+model TemporaryData { 
+  id                String   @id @default(cuid())
+  email             String   @unique
+  verificationcode  String? 
+
+}
