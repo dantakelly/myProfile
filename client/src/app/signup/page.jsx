@@ -25,7 +25,7 @@ const SignupPage = () => {
             return;
         }
 
-        axios.post('http://localhost:8080/api/verification', {
+        axios.post('https://my-profile-server-one.vercel.app/api/verification', {
             email: email,
         })
         .then(function (vertifyingUser) {
