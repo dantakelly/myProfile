@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation"
 import headerStyleCss from "./headerStyle.css";
 import { useEffect, useState } from "react"
 import Cookies from "js-cookie"
+import { useParams } from "next/navigation";
 
 export default function Header() {
   const pathname = usePathname()
@@ -14,7 +15,7 @@ export default function Header() {
 
   useEffect(() => {
     const authToken = Cookies.get("authToken")
-    setShowDashboardButton(authToken && pathname === "/" || pathname === "/profile")
+    setShowDashboardButton(authToken && pathname === "/" || pathname.startsWith("/profile/"))
   }, [pathname])
 
   const activeStyle = {
