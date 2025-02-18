@@ -5,6 +5,7 @@ import { useParams } from "next/navigation"
 import Image from "next/image"
 import axios from "axios"
 import headlineStyle from "@/components/headlineHome/headlineStyle.css"
+import profileStyle from "../profileStyle.css"
 
 export default function PublicProfile() {
   const [profileData, setProfileData] = useState(null)
@@ -53,7 +54,7 @@ export default function PublicProfile() {
               {profileData.instagramHandle && (
                 <p>
                   Instagram: 
-                  <span 
+                  <span className="link-profile-span" 
                     onClick={() => {
                       navigator.clipboard.writeText(profileData.instagramHandle)
                       alert("Instagram handle copied!")
@@ -68,7 +69,7 @@ export default function PublicProfile() {
               {profileData.tiktokHandle && (
                 <p>
                   TikTok: 
-                  <span 
+                  <span className="link-profile-span" 
                     onClick={() => {
                       navigator.clipboard.writeText(profileData.tiktokHandle)
                       alert("TikTok handle copied!")

@@ -1,0 +1,23 @@
+@media screen and (min-width: 0px) and (max-width: 500px) {
+
+    .socials-headline{
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        /* padding: 0px 20px; */
+
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        gap: 1px !important;
+    }
+
+    .link-profile-span{
+       display: flex;
+       flex-direction: column;
+
+       width: fit-content;
+    }
+}
