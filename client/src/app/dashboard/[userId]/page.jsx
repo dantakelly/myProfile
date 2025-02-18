@@ -59,7 +59,7 @@ export default function Dashboard() {
       formData.append("file", file)
 
       try {
-        const response = await axios.put(`http://localhost:8080/api/updateprofile/${userId}`, formData, {
+        const response = await axios.put(`https://my-profile-server-one.vercel.app/api/updateprofile/${userId}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -80,7 +80,7 @@ export default function Dashboard() {
       const formData = new FormData()
       formData.append(field, value)
 
-      const response = await axios.put(`http://localhost:8080/api/updateprofile/${userId}`, formData, {
+      const response = await axios.put(`https://my-profile-server-one.vercel.app/api/updateprofile/${userId}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
