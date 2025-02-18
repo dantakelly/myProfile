@@ -53,7 +53,7 @@ export default function PublicProfile() {
               {profileData.instagramHandle && (
                 <p>
                   Instagram: 
-                  <span 
+                  <span style={{width: "fitContent"}}
                     onClick={() => {
                       navigator.clipboard.writeText(profileData.instagramHandle)
                       alert("Instagram handle copied!")
