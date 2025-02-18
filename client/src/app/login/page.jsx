@@ -33,7 +33,7 @@ export default function Login() {
 
             // to get the user id 
             const userId = response.data.userId; 
-            router.push(`https://my-profile-client.vercel.app/dashboard/${userId}`)
+            router.push(`/dashboard/${userId}`)
     
         })
         .catch(function (error) { 
