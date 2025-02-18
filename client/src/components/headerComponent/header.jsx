@@ -14,7 +14,7 @@ export default function Header() {
 
   useEffect(() => {
     const authToken = Cookies.get("authToken")
-    setShowDashboardButton(authToken && pathname === "/")
+    setShowDashboardButton(authToken && pathname === "/" || pathname === "/profile")
   }, [pathname])
 
   const activeStyle = {
