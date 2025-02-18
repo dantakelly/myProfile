@@ -165,14 +165,14 @@ export default function Dashboard() {
               value={instagramHandle}
               onChange={(e) => handleSocialChange("instagramHandle", e.target.value)}
               placeholder="Instagram handle"
-              style={{padding: "10px 20px", borderRadius: "6px", marginTop: "20px", border: "pink 2px solid", outline: "none"}}
+              style={{padding: "10px 10px", borderRadius: "6px", marginTop: "20px", border: "pink 2px solid", outline: "none"}}
             />
             <input className="input-handle"
               type="text"
               value={tiktokHandle}
               onChange={(e) => handleSocialChange("tiktokHandle", e.target.value)}
               placeholder="TikTok handle"
-              style={{padding: "10px 20px", borderRadius: "6px", marginTop: "20px", border: "pink 2px solid", outline: "none"}}
+              style={{padding: "10px 10px", borderRadius: "6px", marginTop: "20px", border: "pink 2px solid", outline: "none"}}
             />
 
             <button
