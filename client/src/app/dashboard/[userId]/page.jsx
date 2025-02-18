@@ -26,7 +26,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/getprofile/${userId}`)
+        const response = await axios.get(`https://my-profile-server-one.vercel.app/api/getprofile/${userId}`)
         const profileData = response.data
 
         setImagePreview(profileData.profileImage)

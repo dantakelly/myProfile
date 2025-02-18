@@ -16,7 +16,7 @@ export default function PublicProfile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/getprofile/${userId}`)
+        const response = await axios.get(`https://my-profile-server-one.vercel.app/api/getprofile/${userId}`)
         setProfileData(response.data)
       } catch (error) {
         console.error("Error fetching profile:", error)

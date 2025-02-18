@@ -41,7 +41,7 @@ const SignupPage = () => {
     function VerifyCodeAPI(event) {
         event.preventDefault();
 
-        axios.post('http://localhost:8080/api/signup', {
+        axios.post('https://my-profile-server-one.vercel.app/api/signup', {
             email: email,
             password: password,
             verificationCode: verificationCode,
