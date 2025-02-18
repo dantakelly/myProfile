@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import loginPageCSS from "./loginPage.css"
 import axios from "axios"
 import { useRouter } from 'next/navigation'
+import Cookies from 'js-cookie';
 
 export default function Login() {
 
@@ -19,11 +20,9 @@ export default function Login() {
     function handleUserLogin(event) { 
         event.preventDefault();
 
-        axios.post('https://my-profile-server-one.vercel.app/api/login', { 
+        axios.post('http://localhost:8080/api/login', { 
             email: email,
             password: password,
-        }, {
-            withCredentials: true //this set the cooke from the backend
         })
         .then(function (response) { 
             console.log("user created sucessfully", response.data)
@@ -33,8 +32,11 @@ export default function Login() {
 
             // to get the user id 
             const userId = response.data.userId; 
+
+            // Cookie setup 
+            Cookies.set("authToken", userId, { expires: 7 })
+
             router.push(`/dashboard/${userId}`)
-    
         })
         .catch(function (error) { 
             console.error("there is an error", error)

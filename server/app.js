@@ -107,13 +107,13 @@ app.post("/api/login", async (req, res) => {
             }
         })
         if(loginUser && await bcrypt.compare(password, loginUser.password)) {
-            // Set a cookie with the user's ID
-            res.cookie('userId', loginUser.id, {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === 'production', 
-                sameSite: 'lax',
-                maxAge: 7 * 24 * 60 * 60 * 1000
-            });
+
+            // res.cookie('userId', loginUser.id, {
+            //     httpOnly: true,
+            //     secure: process.env.NODE_ENV === 'production', 
+            //     sameSite: 'lax',
+            //     maxAge: 7 * 24 * 60 * 60 * 1000
+            // });
 
             res.status(200).json({ message: "User is logged in successfully!", userId: loginUser.id})
              

@@ -1,56 +1,64 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import headerStyleCss from "./headerStyle.css";
-import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react"
+import Cookies from "js-cookie"
 
 export default function Header() {
-    const pathname = usePathname();
-    const router = useRouter(); 
-    const isDashboard = pathname.startsWith("/dashboard");
+  const pathname = usePathname()
+  const router = useRouter()
+  const isDashboard = pathname.startsWith("/dashboard")
+  const [showDashboardButton, setShowDashboardButton] = useState(false)
 
-    const activeStyle = { 
-        backgroundColor: 'var(--textColor)',
-        color: "white"
-    }
+  useEffect(() => {
+    const authToken = Cookies.get("authToken")
+    setShowDashboardButton(authToken && pathname === "/")
+  }, [pathname])
 
-    const logoutFunction = () => {
-        axios.post('https://my-profile-server-one.vercel.app/api/logout', {
-            
-        }, {
-            withCredentials: true, 
-        })
-        .then(function (responce) { 
-            console.log("Logging out", responce.data)
-            router.push("/"); 
-        })
-        .catch(function (error) { 
-            console.log("There is an error logging out", error); 
-        })
-    }
+  const activeStyle = {
+    backgroundColor: "var(--textColor)",
+    color: "white",
+  }
 
-    return (
-        <div id="Header">
-            <div className="header-content">
-                <ul>
-                    {isDashboard ? (
-                        <li>
-                            <button 
-                                onClick={logoutFunction}
-                                className="logout-button">
-                                Logout
-                              </button> 
-                        </li>
-                    ) : (
-                        <>
-                            <li> <Link href="/login"><button style={pathname === "/login" ? activeStyle : {}}>Login</button></Link> </li>
-                            <li> <Link href="/signup"><button style={pathname === "/signup" ? activeStyle : {}}>Create Your Profile</button></Link> </li>
-                        </>
-                    )}
-                </ul>
-            </div>
-        </div>
-    );
+  const handleLogout = () => {
+    Cookies.remove("authToken")
+    router.push("/")
+  }
+
+  return (
+    <div id="Header">
+      <div className="header-content">
+        <ul>
+          {isDashboard ? (
+            <li>
+              <button onClick={handleLogout} className="logout-button">
+                Logout
+              </button>
+            </li>
+          ) : showDashboardButton ? (
+            <li>
+              <Link href={`/dashboard/${Cookies.get("authToken")}`}>
+                <button>Dashboard</button>
+              </Link>
+            </li>
+          ) : (
+            <>
+              <li>
+                <Link href="/login">
+                  <button style={pathname === "/login" ? activeStyle : {}}>Login</button>
+                </Link>
+              </li>
+              <li>
+                <Link href="/signup">
+                  <button style={pathname === "/signup" ? activeStyle : {}}>Create Your Profile</button>
+                </Link>
+              </li>
+            </>
+          )}
+        </ul>
+      </div>
+    </div>
+  )
 }
