@@ -14,8 +14,8 @@ const SignupPage = () => {
     const [success, setSuccess] = useState("");
     const [isVerifying, setIsVerifying] = useState(false);
     const router = useRouter()
-    const pathname = usePathname()
-    const searchParams = useSearchParams() 
+    // const pathname = usePathname()
+    // const searchParams = useSearchParams() 
 
     function SignupAPI(event) {
         event.preventDefault();
