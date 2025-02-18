@@ -15,7 +15,7 @@ app.use(cookieParser());
 const upload = multer({ storage: multer.memoryStorage() });
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', "https://my-profile-client.vercel.app"],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'],
